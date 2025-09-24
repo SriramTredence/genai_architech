@@ -26,7 +26,7 @@ if st.button("Get Recommendations"):
     recommendations = recommend_courses(profile, completed_ids)
 
     st.subheader("Top 5 Recommended Courses")
-    for course_id, score in recommendations:
+    for course_id, score in recommendations[:5]:
         course = df[df["course_id"] == course_id].iloc[0]
         st.markdown(f"### {course['title']}")
         st.markdown(f"**Course ID**: {course_id}")
