@@ -1,3 +1,6 @@
 *.env
 *pycache*
 *.venv
+*mlartifacts*
+*mlruns*
+*mlflow.db

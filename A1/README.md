@@ -7,6 +7,12 @@ This project analyzes real-time sentiment on public companies using LangChain, G
 ```bash
 pip install -r requirements.txt
 
+
+## Start MLFlow server
+export $(cat .env | xargs)
+mlflow server   --host 0.0.0.0   --port ${MLFLOW_TRACKING_PORT}
+
+
 ## Launch Streamlit UI
 
 ```bash

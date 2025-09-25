@@ -12,11 +12,12 @@ from components.sent_db import load_sentiment_history
 
 st.title("Real-Time Market Sentiment Analyzer")
 
-company = st.text_input("Enter Company Name", "Apple Inc")
+company = st.text_input("Enter Company Name", "Microsoft")
 
 if st.button("Analyze"):
     with st.spinner("Running sentiment analysis..."):
         result = run_chain(company)
+        print("result: ", result)
         st.subheader("Sentiment Summary")
         st.json(result.dict())
 

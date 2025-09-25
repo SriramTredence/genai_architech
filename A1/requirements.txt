@@ -12,3 +12,4 @@ streamlit
 altair
 langchain-community
 langchain-core
+yahooquery

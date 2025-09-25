@@ -44,7 +44,7 @@ Respond ONLY in this JSON schema:
     input_variables=["company_name", "stock_code", "news"],
     partial_variables={"format_instructions": parser.get_format_instructions()},
 )
-print(f"API KEY {os.getenv("AZURE_OPENAI_API_KEY")}")
+# print(f"API KEY {os.getenv("AZURE_OPENAI_API_KEY")}")
 llm = AzureChatOpenAI(
     deployment_name=os.getenv("OPENAI_DEPLOYMENT"), 
     temperature=0.2,
@@ -55,7 +55,7 @@ chain = prompt|llm|parser
 
 def analyze_sentiment(company_name, stock_code, news):
     mlflow.set_tag("stage", "sentiment_analysis")
-    return chain.run({
+    return chain.invoke({
         "company_name": company_name,
         "stock_code": stock_code,
         "news": news,
