@@ -36,6 +36,7 @@ class GraphState(dict):
     initial_answer: str
     critique_result: str
     final_answer: str
+    run_id: str
 
 #Retriever Node
 def retrieve_top_k(state: GraphState, k=5):
@@ -136,8 +137,10 @@ def refine_answer(state: GraphState):
 def init_mlflow():
     # if not is_mlflow_running(os.getenv("MLFLOW_TRACKING_URI")):
     #     start_mlflow_server()
+    
     mlflow.set_tracking_uri(os.getenv("MLFLOW_TRACKING_URI"))
     mlflow.set_experiment("Assignment_3")
+
 
 def start_run(question):
     return mlflow.start_run(run_name=f"RAG_Solution_for_{question}")
@@ -148,6 +151,8 @@ def log_to_mlflow(state: GraphState):
     mlflow.start_run()
     run = mlflow.active_run()
     print(f"run_id: {run.info.run_id}; status: {run.info.status}")
+    run_id = run.info.run_id
+    state["run_id"] = run_id
     mlflow.log_param("question", state["question"])
     mlflow.log_param("critique", state["critique_result"])
     mlflow.log_text(state["initial_answer"], "initial_answer.txt")
