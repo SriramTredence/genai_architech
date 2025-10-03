@@ -24,3 +24,7 @@ Built for Assignment 3: Agentic RAG System with Azure OpenAI & LangGraph
 
 4. Run the streamlit app
     streamlit run streamlit_app.py
+
+5. Ask any of the questions for Agentic Search in the search bar and get the response. 
+
+6. Link to MLFlow run is also provided in the streamlit UI. 
